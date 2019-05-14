@@ -17,7 +17,13 @@ class BeachesViewController: UIViewController {
     let audioPlayer: AVAudioPlayer
     let startButton: UIButton
     let qtFoolingBgView: UIView = UIView.init(frame: CGRect.zero)
-
+    let containerView = UIView(frame: .zero)
+    
+    var wobblyViews = [BeachesWobblyView]()
+    var wobblyView: BeachesWobblyView?
+    
+    var introPosition = 0
+    
     // MARK: - UIViewController
     
     init() {
@@ -57,6 +63,10 @@ class BeachesViewController: UIViewController {
         // barely visible tiny view for fooling Quicktime player. completely black images are ignored by QT
         self.view.addSubview(self.qtFoolingBgView)
         
+        self.containerView.backgroundColor = .white
+        self.containerView.isHidden = true
+        self.view.addSubview(self.containerView)
+        
         if !self.autostart {
             self.view.addSubview(self.startButton)
         }
@@ -86,6 +96,45 @@ class BeachesViewController: UIViewController {
             height: 2
         )
 
+        self.containerView.frame = self.view.bounds
+        
+        for i in 0...7 {
+            let color: UIColor
+            switch i {
+            case 0:
+                color = UIColor(red: (127.0 / 255.0), green: 0, blue: 1, alpha: 1)
+            case 1:
+                color = UIColor(red: (63.0 / 255.0), green: 0, blue: 1, alpha: 1)
+            case 2:
+                color = .blue
+            case 3:
+                color = .green
+            case 4:
+                color = .yellow
+            case 5:
+                color = .orange
+            case 6:
+                color = .red
+            case 7:
+                color = .white
+            default:
+                abort()
+            }
+            
+            let scale: CGFloat = 2.0 - (CGFloat(i) / 7.0)
+            
+            let wobblyView = BeachesWobblyView(frame: self.view.bounds, tintColor: color, singleImage: true)
+            wobblyView.transform = CGAffineTransform.identity.scaledBy(x: scale, y: scale)
+            wobblyView.isHidden = true
+            self.containerView.addSubview(wobblyView)
+
+            self.wobblyViews.append(wobblyView)
+        }
+
+        let wobblyView = BeachesWobblyView(frame: self.view.bounds, tintColor: .black, singleImage: false)
+        self.containerView.addSubview(wobblyView)
+        self.wobblyView = wobblyView
+        
         self.startButton.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
     }
     
@@ -120,18 +169,52 @@ class BeachesViewController: UIViewController {
     fileprivate func start() {
         self.audioPlayer.play()
         
+        self.containerView.isHidden = false
+        
         scheduleEvents()
     }
     
     private func scheduleEvents() {
-        let bpm = 140.0
-        let bar = (120.0 / bpm) * 2.0
+        let bpm = 120.0
+        let bar = (120.0 / bpm)
         let tick = bar / 16.0
 
-        perform(#selector(event), with: nil, afterDelay: tick)
+        let introStart = 4.0
+        
+        perform(#selector(introEvent), with: nil, afterDelay: introStart)
+        perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 6.0))
+        perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 12.0))
+        perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 16.0))
+        perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 28.0))
+        perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 30.0))
+        perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 32.0))
+        perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 38.0))
+        perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 44.0))
+        perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 48.0))
+        perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 52.0))
+        perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 60.0))
+
+        perform(#selector(startAnimation), with: nil, afterDelay: 8)
     }
     
-    @objc private func event() {
-        // intentionally left blank
+    @objc private func introEvent() {
+        self.wobblyView?.showImage(index: self.introPosition)
+        
+        if self.introPosition == 11 {
+            UIView.animate(withDuration: 0.25, animations: {
+                self.wobblyView?.transform = CGAffineTransform.identity.scaledBy(x: 3, y: 3)
+            })
+        }
+        
+        self.introPosition += 1
+    }
+    
+    @objc private func startAnimation() {
+        self.wobblyView?.isHidden = true
+        
+        for view in self.wobblyViews {
+            view.isHidden = false
+            view.animate()
+        }
     }
 }
