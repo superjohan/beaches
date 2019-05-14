@@ -9,19 +9,21 @@
 /* Begin PBXBuildFile section */
 		90303D4822888525009E9660 /* beaches.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 90303D4722888525009E9660 /* beaches.m4a */; };
 		9042B7252056F88C000DB49A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042B7242056F88C000DB49A /* AppDelegate.swift */; };
-		9042B7272056F88C000DB49A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042B7262056F88C000DB49A /* ViewController.swift */; };
+		9042B7272056F88C000DB49A /* BeachesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042B7262056F88C000DB49A /* BeachesViewController.swift */; };
 		9042B72C2056F88C000DB49A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9042B72B2056F88C000DB49A /* Assets.xcassets */; };
 		9042B72F2056F88C000DB49A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9042B72D2056F88C000DB49A /* LaunchScreen.storyboard */; };
+		90FE7572228B1E060082C67A /* BeachesWobblyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FE7571228B1E060082C67A /* BeachesWobblyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		90303D4722888525009E9660 /* beaches.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beaches.m4a; sourceTree = "<group>"; };
 		9042B7212056F88C000DB49A /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9042B7242056F88C000DB49A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9042B7262056F88C000DB49A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9042B7262056F88C000DB49A /* BeachesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeachesViewController.swift; sourceTree = "<group>"; };
 		9042B72B2056F88C000DB49A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9042B72E2056F88C000DB49A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9042B7302056F88C000DB49A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90FE7571228B1E060082C67A /* BeachesWobblyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeachesWobblyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				9042B7242056F88C000DB49A /* AppDelegate.swift */,
-				9042B7262056F88C000DB49A /* ViewController.swift */,
+				9042B7262056F88C000DB49A /* BeachesViewController.swift */,
+				90FE7571228B1E060082C67A /* BeachesWobblyView.swift */,
 				9042B72B2056F88C000DB49A /* Assets.xcassets */,
 				9042B72D2056F88C000DB49A /* LaunchScreen.storyboard */,
 				9042B7302056F88C000DB49A /* Info.plist */,
@@ -137,7 +140,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9042B7272056F88C000DB49A /* ViewController.swift in Sources */,
+				90FE7572228B1E060082C67A /* BeachesWobblyView.swift in Sources */,
+				9042B7272056F88C000DB49A /* BeachesViewController.swift in Sources */,
 				9042B7252056F88C000DB49A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
