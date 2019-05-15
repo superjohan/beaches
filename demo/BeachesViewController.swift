@@ -42,6 +42,7 @@ class BeachesViewController: UIViewController {
                 "by jumalauta\n" +
                 "\n" +
                 "programming and music by ylvaes\n" +
+                "text by soluttautuja\n" +
                 "\n" +
                 "presented at skeneklubi annual meeting 2019\n" +
                 "\n" +
