@@ -122,7 +122,7 @@ class BeachesViewController: UIViewController {
                 abort()
             }
             
-            let scale: CGFloat = 2.0 - (CGFloat(i) / 7.0)
+            let scale: CGFloat = 3.0 - ((CGFloat(i) / 7.0) * 2.0)
             
             let wobblyView = BeachesWobblyView(frame: self.view.bounds, tintColor: color, singleImage: true)
             wobblyView.transform = CGAffineTransform.identity.scaledBy(x: scale, y: scale)
