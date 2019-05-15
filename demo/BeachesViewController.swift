@@ -21,8 +21,11 @@ class BeachesViewController: UIViewController {
     
     var wobblyViews = [BeachesWobblyView]()
     var wobblyView: BeachesWobblyView?
+    var textView: BeachesTextView?
     
     var introPosition = 0
+    
+    var textTimer: Timer?
     
     // MARK: - UIViewController
     
@@ -136,6 +139,10 @@ class BeachesViewController: UIViewController {
         self.containerView.addSubview(wobblyView)
         self.wobblyView = wobblyView
         
+        let textView = BeachesTextView(frame: self.view.bounds)
+        self.containerView.addSubview(textView)
+        self.textView = textView
+        
         self.startButton.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
     }
     
@@ -151,6 +158,9 @@ class BeachesViewController: UIViewController {
         super.viewDidDisappear(animated)
         
         self.audioPlayer.stop()
+        
+        self.textTimer?.invalidate()
+        self.textTimer = nil
     }
     
     // MARK: - Private
@@ -196,6 +206,8 @@ class BeachesViewController: UIViewController {
         perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 60.0))
 
         perform(#selector(startAnimation), with: nil, afterDelay: 8)
+        
+        perform(#selector(startShowingText), with: nil, afterDelay: 16)
     }
     
     @objc private func introEvent() {
@@ -217,5 +229,13 @@ class BeachesViewController: UIViewController {
             view.isHidden = false
             view.animate()
         }
+    }
+    
+    @objc private func startShowingText() {
+        self.textView?.showNextImage()
+
+        self.textTimer = Timer.scheduledTimer(withTimeInterval: 8, repeats: true, block: { timer in
+            self.textView?.showNextImage()
+        })
     }
 }
