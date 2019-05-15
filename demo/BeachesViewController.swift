@@ -22,6 +22,7 @@ class BeachesViewController: UIViewController {
     var wobblyViews = [BeachesWobblyView]()
     var wobblyView: BeachesWobblyView?
     var textView: BeachesTextView?
+    var bg: UIView?
     
     var introPosition = 0
     
@@ -67,7 +68,7 @@ class BeachesViewController: UIViewController {
         // barely visible tiny view for fooling Quicktime player. completely black images are ignored by QT
         self.view.addSubview(self.qtFoolingBgView)
         
-        self.containerView.backgroundColor = .white
+        self.containerView.backgroundColor = .black
         self.containerView.isHidden = true
         self.view.addSubview(self.containerView)
         
@@ -102,6 +103,11 @@ class BeachesViewController: UIViewController {
 
         self.containerView.frame = self.view.bounds
         
+        self.bg = UIView()
+        self.bg?.frame = CGRect(x: self.view.bounds.size.width / 2.0, y: 0, width: 0, height: self.view.bounds.size.height)
+        self.bg?.backgroundColor = .white
+        self.containerView.addSubview(self.bg!)
+
         for i in 0...7 {
             let color: UIColor
             switch i {
@@ -190,6 +196,8 @@ class BeachesViewController: UIViewController {
         let bar = (120.0 / bpm)
         let tick = bar / 16.0
 
+        perform(#selector(startTransition), with: nil, afterDelay: 0)
+        
         let introStart = 4.0
         
         perform(#selector(introEvent), with: nil, afterDelay: introStart)
@@ -208,6 +216,13 @@ class BeachesViewController: UIViewController {
         perform(#selector(startAnimation), with: nil, afterDelay: 8)
         
         perform(#selector(startShowingText), with: nil, afterDelay: 16)
+    }
+    
+    @objc private func startTransition() {
+        UIView.animate(withDuration: 4, delay: 0, options: [.curveEaseOut], animations: {
+            self.bg?.bounds.size.width = self.view.bounds.size.width
+            self.bg?.frame.origin.x = 0
+        }, completion: nil)
     }
     
     @objc private func introEvent() {
