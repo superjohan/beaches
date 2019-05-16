@@ -230,7 +230,7 @@ class BeachesViewController: UIViewController {
         self.wobblyView?.showImage(index: self.introPosition)
         
         if self.introPosition == 11 {
-            UIView.animate(withDuration: 0.25, animations: {
+            UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseIn], animations: {
                 self.wobblyView?.transform = CGAffineTransform.identity.scaledBy(x: 3, y: 3)
             })
         }
