@@ -197,11 +197,9 @@ class BeachesViewController: UIViewController {
         let bpm = 120.0
         let bar = (120.0 / bpm)
         let tick = bar / 16.0
+        let introStart = 4.0
 
         perform(#selector(startTransition), with: nil, afterDelay: 0)
-        
-        let introStart = 4.0
-        
         perform(#selector(introEvent), with: nil, afterDelay: introStart)
         perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 6.0))
         perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 12.0))
@@ -214,11 +212,8 @@ class BeachesViewController: UIViewController {
         perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 48.0))
         perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 52.0))
         perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 60.0))
-
         perform(#selector(startAnimation), with: nil, afterDelay: 8)
-        
         perform(#selector(startShowingText), with: nil, afterDelay: 16)
-
         perform(#selector(moreBounce), with: nil, afterDelay: 56)
     }
     
