@@ -154,7 +154,7 @@ class BeachesViewController: UIViewController {
         
         let scroller = UILabel(frame: CGRect.zero)
         scroller.text = "Hey there! The last invitation I made didn't have a scroller so this one has to have one, right? Anyway uh I don't have that much to say. Greetings to all Jumalauta members present at the Skeneklubi Annual Meeting 2019, and also greetings to everyone who's coming to either Beaches Leave, Jumalauta 19 Years (aka JumaCon), or both! As you may already have noticed, this whole thing is on a loop, so feel free to quit any time. This whole thing was done in a few evenings the same week as the party. Most of it's recycled from older demos, which comes as a huge surprise I'm sure. I hope the scroller is readable. Anyway let's drink some beers and have fun. Have a good summer!"
-        scroller.font = UIFont.boldSystemFont(ofSize: 36)
+        scroller.font = UIFont(name: "Futura-Medium", size: 36)
         scroller.backgroundColor = .clear
         scroller.textColor = .black
         scroller.shadowColor = .white
