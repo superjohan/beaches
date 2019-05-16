@@ -35,6 +35,8 @@ class BeachesViewController: UIViewController {
             guard let audioPlayer = try? AVAudioPlayer(contentsOf: trackUrl) else {
                 abort()
             }
+
+            audioPlayer.numberOfLoops = 99999
             
             self.audioPlayer = audioPlayer
         } else {
