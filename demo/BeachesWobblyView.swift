@@ -66,6 +66,19 @@ class BeachesWobblyView: UIView {
         }
     }
     
+    func moreBounce() {
+        for view in self.images {
+            let animation2 = CABasicAnimation(keyPath: "transform.scale")
+            animation2.fromValue = NSNumber(floatLiteral: 1)
+            animation2.toValue = NSNumber(floatLiteral: 1.25)
+            animation2.duration = 0.5
+            animation2.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            animation2.autoreverses = true
+            animation2.repeatCount = Float.infinity
+            view.layer.add(animation2, forKey: "scale")
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

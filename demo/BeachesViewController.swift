@@ -218,6 +218,8 @@ class BeachesViewController: UIViewController {
         perform(#selector(startAnimation), with: nil, afterDelay: 8)
         
         perform(#selector(startShowingText), with: nil, afterDelay: 16)
+
+        perform(#selector(moreBounce), with: nil, afterDelay: 56)
     }
     
     @objc private func startTransition() {
@@ -255,5 +257,13 @@ class BeachesViewController: UIViewController {
         self.textTimer = Timer.scheduledTimer(withTimeInterval: 8, repeats: true, block: { timer in
             self.textView?.showNextImage()
         })
+    }
+    
+    @objc private func moreBounce() {
+        for (index, view) in self.wobblyViews.enumerated() {
+            Timer.scheduledTimer(withTimeInterval: Double(index) * 0.05, repeats: false, block: { timer in
+                view.moreBounce()
+            })
+        }
     }
 }
