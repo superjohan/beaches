@@ -19,6 +19,7 @@ class BeachesTextView: UIView {
             let image = UIImage(named: "beachesleavetext\(i)")
             let imageView = UIImageView(image: image)
             imageView.frame = self.bounds
+            imageView.contentMode = .scaleAspectFit
             addSubview(imageView)
             
             let mask = UIView(frame: CGRect(x: self.bounds.size.width, y: 0, width: 0, height: self.bounds.size.height))

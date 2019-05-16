@@ -20,6 +20,7 @@ class BeachesWobblyView: UIView {
             imageView.frame = self.bounds
             imageView.tintColor = tintColor
             imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            imageView.contentMode = .scaleAspectFit
             addSubview(imageView)
             
             self.images.append(imageView)
@@ -31,6 +32,7 @@ class BeachesWobblyView: UIView {
                 imageView.tintColor = tintColor
                 imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 imageView.isHidden = true
+                imageView.contentMode = .scaleAspectFit
                 addSubview(imageView)
                 
                 self.images.append(imageView)
