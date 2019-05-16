@@ -105,7 +105,7 @@ class BeachesViewController: UIViewController {
         
         self.bg = UIView()
         self.bg?.frame = CGRect(x: self.view.bounds.size.width / 2.0, y: 0, width: 0, height: self.view.bounds.size.height)
-        self.bg?.backgroundColor = .white
+        self.bg?.backgroundColor = .black
         self.containerView.addSubview(self.bg!)
 
         for i in 0...7 {
@@ -219,9 +219,10 @@ class BeachesViewController: UIViewController {
     }
     
     @objc private func startTransition() {
-        UIView.animate(withDuration: 4, delay: 0, options: [.curveEaseOut], animations: {
+        UIView.animate(withDuration: 4, delay: 0, options: [.curveEaseInOut], animations: {
             self.bg?.bounds.size.width = self.view.bounds.size.width
             self.bg?.frame.origin.x = 0
+            self.bg?.backgroundColor = .white
         }, completion: nil)
     }
     
