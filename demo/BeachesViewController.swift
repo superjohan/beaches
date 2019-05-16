@@ -234,6 +234,7 @@ class BeachesViewController: UIViewController {
         perform(#selector(introEvent), with: nil, afterDelay: introStart + (tick * 60.0))
         perform(#selector(startAnimation), with: nil, afterDelay: 8)
         perform(#selector(startShowingText), with: nil, afterDelay: 16)
+        perform(#selector(startScroller), with: nil, afterDelay: 32)
         perform(#selector(moreBounce), with: nil, afterDelay: 56)
     }
     
